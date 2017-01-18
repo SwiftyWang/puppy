@@ -22,11 +22,12 @@ module.exports = {
 function getAllPuppies(req, res, next) {
     db.any('select * from pups')
         .then(function (data) {
+            console.log(data);
             res.status(200)
                 .json({
                     status: 'success',
                     data: data,
-                    message: 'Retrieved ALL puppies'
+                    message: `Retrieved ALL ${data.length} puppies`
                 });
         })
         .catch(function (err) {
